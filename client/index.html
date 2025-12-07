@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Damage Test</title>
+</head>
+<body>
+
+    <h1>Car Damage Detection</h1>
+
+    <input type="file" id="fileInput">
+    <button onclick="uploadFile()">Upload & Predict</button>
+
+    <p id="result"></p>
+
+    <script>
+        async function uploadFile() {
+            const fileInput = document.getElementById('fileInput');
+            if (fileInput.files.length === 0) {
+                alert("Please select an image first!");
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const binary = await file.arrayBuffer();
+
+            const response = await fetch("http://127.0.0.1:8000/predict-image", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/octet-stream"
+                },
+                body: binary
+            });
+
+            const json = await response.json();
+            document.getElementById('result').innerHTML =
+                "<b>Prediction:</b> " + JSON.stringify(json);
+        }
+    </script>
+
+</body>
+</html>
