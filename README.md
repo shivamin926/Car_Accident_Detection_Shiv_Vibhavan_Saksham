@@ -7,7 +7,6 @@ It includes:
 - FastAPI backend with a prediction API
 - Simple frontend for uploading images
 - Trained model with weights included
-- No python-multipart required
 
 ### Project Structure
 ```
@@ -110,21 +109,6 @@ Prediction: {"prediction": 1}
 
 - Raw binary file data is sent to /predict-image
 
-- Compatible with Python 3.13
-
-## Optional Improvements
-
-#### Possible enhancements:
-
-- Image preview in browser
-
-- Display confidence score
-
-- Styled UI
-
-- Drag & drop upload
-
-- Deployment (Render, Railway, Azure, etc)
 
 ## Contributors
 #### Group ID: 26
